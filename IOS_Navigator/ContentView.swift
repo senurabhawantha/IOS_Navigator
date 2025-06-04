@@ -1,74 +1,59 @@
-//
-//  ContentView.swift
-//  IOS_Navigator
-//
-//  Created by ITEDP on 2025-06-02.
-//
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
         ZStack {
             // Background Image
-            Image("backgroundImage") // Replace with your actual image name in assets
+            Image("backgroundImage2") // Replace with your actual image name in assets
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
-                HStack {
-                    Spacer()
-//                    Button("Skip") {
-//                        // Action for skip
-//                    }
-//                    .foregroundColor(.white)
-//                    .padding()
-                }
-                
-                Spacer()
-                
+                // Top: Welcome Text
                 Text("Welcome")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                    .font(.custom("Futura", size: 65)) // Use correct PostScript name
                     .foregroundColor(.white)
-                    .padding(.top, -40)
-                
-                Spacer().frame(height: 30)
-                
-                Image("logo") // Replace with custom image if needed
-                    .resizable()
-                    .frame(width: 100, height: 100)
-                    .foregroundColor(.blue)
-                
-                Spacer().frame(height: 30)
-                
-                Text("NIBM Navigator helps you find your way around the campus and find essential information")
-                    .font(.body)
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 30)
-                
-                Spacer().frame(height: 30)
-                
-                Button(action: {
-                    // Navigate to next screen
-                }) {
-                    Text("Get Started")
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(12)
-                        .padding(.horizontal, 40)
-                }
+                    .padding(.top, 125)
                 
                 Spacer()
+                
+                // Middle: Logo
+                Image("logo") // Replace with your actual image name
+                    .resizable()
+                    .frame(width: 150, height: 150)
+                    .foregroundColor(.blue)
+                                
+                Spacer()
+                
+                // Bottom: Description and Button
+                VStack(spacing: 20) {
+                    Text("Campus Navigator helps you find your way around the campus and find essential information")
+                        .font(.custom("Futura", size: 17))
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 30)
+                    
+                    Button(action: {
+                        // Navigate to next screen
+                    }) {
+                        Text("Get Started")
+                            .foregroundColor(.white)
+                            .font(.custom("Futura", size: 25))
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(12)
+                            .padding(.horizontal, 40)
+                    }
+                }
+                .padding(.bottom, 75)
             }
         }
     }
 }
 
-struct WelcomeView_Previews: PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }

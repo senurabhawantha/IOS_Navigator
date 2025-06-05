@@ -1,0 +1,111 @@
+import SwiftUI
+
+struct LoginView: View {
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @State private var isPasswordVisible: Bool = false
+
+    var body: some View {
+        ZStack {
+            // Background Image
+            Image("backgroundImage") // Replace with your actual image asset name
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                // MARK: - Top Section
+                VStack(spacing: 25) {
+                    Image("logo") // Replace with your logo image asset name
+                        .resizable()
+                        .frame(width: 150, height: 150)
+                    
+                    Text("Login")
+                        .font(.custom("Futura", size: 65))
+                        .foregroundColor(.white)
+                }
+                .padding(.top, 125)
+                
+                Spacer()
+                
+                // MARK: - Middle Section (Fields)
+                VStack(spacing: 25) {
+                    HStack {
+                        Image(systemName: "envelope")
+                            .foregroundColor(.black)
+                        TextField("Email", text: $email)
+                            .font(.custom("Futura", size: 17))
+                            .keyboardType(.emailAddress)
+                            .autocapitalization(.none)
+                            
+                    }
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(16)
+                    .padding(.horizontal, 40)
+
+                    
+                    HStack {
+                        Image(systemName: "lock")
+                            .foregroundColor(.black)
+                        
+                        Group {
+                            if isPasswordVisible {
+                                TextField("Password", text: $password)
+                                    
+                            } else {
+                                SecureField("Password", text: $password)
+                                .font(.custom("Futura", size: 17))
+                            }
+                        }
+                        
+                        Button(action: {
+                            isPasswordVisible.toggle()
+                        }) {
+                            Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
+                                .foregroundColor(.black)
+                        }
+                    }
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(16)
+                    .padding(.horizontal, 40)
+                    
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            // Forgot password logic
+                        }) {
+                            Text("Forgot Password?")
+                                .foregroundColor(.white)
+                                .font(.custom("Futura", size: 17))
+                        }
+                        .padding(.trailing, 40)
+                    }
+                }
+                
+                Spacer()
+                
+                // MARK: - Bottom Section (Login Button)
+                Button(action: {
+                    // Login action
+                }) {
+                    Text("Login")
+                        .foregroundColor(.white)
+                        .font(.custom("Futura", size: 25))
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(12)
+                        .padding(.horizontal, 40)
+
+                }
+                .padding(.bottom, 150)
+            }
+        }
+    }
+}
+
+#Preview {
+    LoginView()
+}

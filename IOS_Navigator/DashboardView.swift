@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct DashboardView: View {
-    // Adjustable constants for easier tweaks
+    // Adjustable constants
     let boxSize: CGFloat = 150
     let gridSpacing: CGFloat = 30
 
@@ -45,7 +45,7 @@ struct DashboardView: View {
                     DashboardButton(imageName: "map", label: "Map", size: boxSize)
                     DashboardButton(imageName: "library", label: "Library", size: boxSize)
                     DashboardButton(imageName: "cafe", label: "Cafe", size: boxSize)
-                    DashboardButton(imageName: "schedule", label: "Schdule", size: boxSize) // Typo preserved
+                    DashboardButton(imageName: "schedule", label: "Schdule", size: boxSize)
                 }
                 .padding(.horizontal, 35)
 
@@ -53,16 +53,22 @@ struct DashboardView: View {
             }
             // MARK: - Bottom Tab Bar
             .safeAreaInset(edge: .bottom) {
-                HStack(spacing: 75) {
-                    TabBarItem(systemImage: "house.fill", isSelected: true)
-                    TabBarItem(systemImage: "location.north.line", isSelected: false)
-                    TabBarItem(systemImage: "bell", isSelected: false)
-                    TabBarItem(systemImage: "person", isSelected: false)
+                VStack {
+                    HStack(spacing: 60) {
+                        TabBarItem(iconName: "homeimage", isSelected: true)
+                        TabBarItem(iconName: "locationimage", isSelected: false)
+                        TabBarItem(iconName: "bellimage", isSelected: false)
+                        TabBarItem(iconName: "profileimage", isSelected: false)
+                    }
+                    .frame(height: 75)
+                    .padding(.horizontal, 40)
+                    .padding(.top, 20)
+                    .padding(.bottom, 30)
                 }
-                .padding()
+                .frame(maxWidth: .infinity)
                 .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 25))
-                .padding(.horizontal, 16)
+                .clipShape(RoundedRectangle(cornerRadius: 30))
+                .padding(.horizontal, 0)
             }
         }
     }
@@ -92,13 +98,15 @@ struct DashboardButton: View {
 }
 
 struct TabBarItem: View {
-    let systemImage: String
+    let iconName: String
     let isSelected: Bool
 
     var body: some View {
-        Image(systemName: systemImage)
-            .font(.system(size: 24))
+        Image(iconName)
+            .resizable()
+            .renderingMode(.template)
             .foregroundColor(isSelected ? .blue : .black)
+            .frame(width: 30, height: 30)
     }
 }
 

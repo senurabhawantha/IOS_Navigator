@@ -12,23 +12,23 @@ struct LoginView: View {
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
-            
+
             VStack {
-                // MARK: - Top Section
+                // Top Section
                 VStack(spacing: 25) {
-                    Image("logo") // Replace with your logo image asset name
+                    Image("logo")
                         .resizable()
                         .frame(width: 150, height: 150)
-                    
+
                     Text("Login")
                         .font(.custom("Futura", size: 65))
                         .foregroundColor(.white)
                 }
                 .padding(.top, 125)
-                
+
                 Spacer()
-                
-                // MARK: - Middle Section (Fields)
+
+                // Middle Section (Fields)
                 VStack(spacing: 25) {
                     HStack {
                         Image(systemName: "envelope")
@@ -37,28 +37,26 @@ struct LoginView: View {
                             .font(.custom("Futura", size: 17))
                             .keyboardType(.emailAddress)
                             .autocapitalization(.none)
-                            
                     }
                     .padding()
                     .background(Color.white)
                     .cornerRadius(16)
                     .padding(.horizontal, 40)
 
-                    
                     HStack {
                         Image(systemName: "lock")
                             .foregroundColor(.black)
-                        
+
                         Group {
                             if isPasswordVisible {
                                 TextField("Password", text: $password)
-                                    
+                                    .font(.custom("Futura", size: 17))
                             } else {
                                 SecureField("Password", text: $password)
-                                .font(.custom("Futura", size: 17))
+                                    .font(.custom("Futura", size: 17))
                             }
                         }
-                        
+
                         Button(action: {
                             isPasswordVisible.toggle()
                         }) {
@@ -70,7 +68,7 @@ struct LoginView: View {
                     .background(Color.white)
                     .cornerRadius(16)
                     .padding(.horizontal, 40)
-                    
+
                     HStack {
                         Spacer()
                         Button(action: {
@@ -83,10 +81,10 @@ struct LoginView: View {
                         .padding(.trailing, 40)
                     }
                 }
-                
+
                 Spacer()
-                
-                // MARK: - Bottom Section (Login Button)
+
+                // Bottom Section (Login Button)
                 Button(action: {
                     // Login action
                 }) {
@@ -98,7 +96,6 @@ struct LoginView: View {
                         .background(Color.blue)
                         .cornerRadius(12)
                         .padding(.horizontal, 40)
-
                 }
                 .padding(.bottom, 150)
             }

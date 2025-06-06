@@ -76,7 +76,7 @@ struct SearchMapView: View {
                 }
                 .frame(height: 75)
                 .padding(.horizontal, 40)
-                .padding(.top, 20)
+                .padding(.top, 10)
                 .padding(.bottom, 20)
             }
             .frame(maxWidth: .infinity)

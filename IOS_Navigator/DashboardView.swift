@@ -67,7 +67,7 @@ struct DashboardView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 30))
+                .clipShape(RoundedRectangle(cornerRadius: 0))
                 .padding(.horizontal, 0)
             }
         }

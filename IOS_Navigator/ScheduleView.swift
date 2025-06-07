@@ -30,10 +30,10 @@ struct ScheduleView: View {
                 // Top Header
                 VStack(alignment: .leading) {
                     HStack {
-                        Button("Back") {
-                            // Handle back action
-                        }
-                        .foregroundColor(.white)
+//                        Button("Back") {
+//                            // Handle back action
+//                        }
+//                        .foregroundColor(.white)
                         
                         Spacer()
                         
@@ -85,11 +85,11 @@ struct ScheduleView: View {
                     TabBarItem(iconName: "profileimage", isSelected: false)
                 }
                 .frame(height: 85)
-                .padding(.horizontal, 50)
+                .padding(.horizontal, 55)
                 .background(Color.white)
                 //.clipShape(RoundedRectangle(cornerRadius: 30))
                 //.shadow(radius: 4)
-                .padding(.bottom, 10)
+                .padding(.bottom, 30)
             }
         }
     }

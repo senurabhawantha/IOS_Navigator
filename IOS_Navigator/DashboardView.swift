@@ -6,69 +6,91 @@ struct DashboardView: View {
     let gridSpacing: CGFloat = 30
 
     var body: some View {
-        ZStack {
-            // Background Image
-            Image("backgroundImage3")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
+        NavigationStack {
+            ZStack {
+                // Background Image
+                Image("backgroundImage3")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                // MARK: - Top Greeting and Profile
-                HStack {
-                    Text("Hi, Fernando 👋!")
-                        .font(.custom("Futura", size: 30))
+                VStack(spacing: 0) {
+                    // Top Greeting and Profile
+                    HStack {
+                        Text("Hi, Fernando 👋!")
+                            .font(.custom("Futura", size: 30))
+                            .foregroundColor(.white)
+
+                        Spacer()
+
+                        Image("profilepicture")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 60, height: 60)
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color.white, lineWidth: 2))
+                    }
+                    .padding(.horizontal, 30)
+                    .padding(.top, 70)
+
+                    // Dashboard Title
+                    Text("Dashboard")
+                        .font(.custom("Futura-Bold", size: 48))
                         .foregroundColor(.white)
+                        .padding(.top, 30)
 
                     Spacer()
 
-                    Image("profilepicture")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 60, height: 60)
-                        .clipShape(Circle())
-                        .overlay(Circle().stroke(Color.white, lineWidth: 2))
-                }
-                .padding(.horizontal, 30)
-                .padding(.top, 70)
-
-                // MARK: - Dashboard Title
-                Text("Dashboard")
-                    .font(.custom("Futura-Bold", size: 48))
-                    .foregroundColor(.white)
-                    .padding(.top, 30)
-
-                // MARK: - Grid Section
-                Spacer()
-
-                LazyVGrid(columns: [GridItem(), GridItem()], spacing: gridSpacing) {
-                    DashboardButton(imageName: "map", label: "Map", size: boxSize)
-                    DashboardButton(imageName: "library", label: "Library", size: boxSize)
-                    DashboardButton(imageName: "cafe", label: "Cafe", size: boxSize)
-                    DashboardButton(imageName: "schedule", label: "Schdule", size: boxSize)
-                }
-                .padding(.horizontal, 35)
-
-                Spacer()
-            }
-            // MARK: - Bottom Tab Bar
-            .safeAreaInset(edge: .bottom) {
-                VStack {
-                    HStack(spacing: 70) {
-                        TabBarItem(iconName: "homeimage", isSelected: true)
-                        TabBarItem(iconName: "locationimage", isSelected: false)
-                        TabBarItem(iconName: "bellimage", isSelected: false)
-                        TabBarItem(iconName: "profileimage", isSelected: false)
+                    // Dashboard Buttons Grid
+                    LazyVGrid(columns: [GridItem(), GridItem()], spacing: gridSpacing) {
+                        NavigationLink(destination: SearchMapView()) {
+                            DashboardButton(imageName: "map", label: "Map", size: boxSize)
+                        }
+                        NavigationLink(destination: LibraryView()) {
+                            DashboardButton(imageName: "library", label: "Library", size: boxSize)
+                        }
+                        NavigationLink(destination: CafetariaView()) {
+                            DashboardButton(imageName: "cafe", label: "Cafe", size: boxSize)
+                        }
+                        NavigationLink(destination: ScheduleView()) {
+                            DashboardButton(imageName: "schedule", label: "Schedule", size: boxSize)
+                        }
                     }
-                    .frame(height: 85)
-                    .padding(.horizontal, 40)
-                    .padding(.top, 20)
-                    .padding(.bottom, 50)
+                    .padding(.horizontal, 35)
+
+                    Spacer()
                 }
-                .frame(maxWidth: .infinity)
-                .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 0))
-                .padding(.horizontal, 0)
+
+                // Bottom Tab Bar with NavigationLinks
+                .safeAreaInset(edge: .bottom) {
+                    VStack {
+                        HStack(spacing: 70) {
+                            // Home Tab (stays here)
+                            TabBarItem(iconName: "homeimage", isSelected: true)
+
+                            // Location Tab
+                            NavigationLink(destination: SearchMapView()) {
+                                TabBarItem(iconName: "locationimage", isSelected: false)
+                            }
+
+                            // Bell Tab
+                            NavigationLink(destination: NotificationView()) {
+                                TabBarItem(iconName: "bellimage", isSelected: false)
+                            }
+
+                            // Profile Tab
+                            NavigationLink(destination: ProfileView()) {
+                                TabBarItem(iconName: "profileimage", isSelected: false)
+                            }
+                        }
+                        .frame(height: 85)
+                        .padding(.horizontal, 40)
+                        .padding(.top, 20)
+                        .padding(.bottom, 50)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background(Color.white)
+                }
             }
         }
     }

@@ -1,93 +1,103 @@
 import SwiftUI
 
 struct MapView: View {
+    @State private var navigateToSteps = false
+    @State private var navigateToSearchMap = false
+
     var body: some View {
-        ZStack(alignment: .bottom) {
-            Color(.systemGray6).ignoresSafeArea()
-            
-            // Main Content
-            VStack(spacing: 0) {
-                // MARK: - Search Bar
-                HStack {
+        NavigationStack {
+            ZStack(alignment: .bottom) {
+                Color(.systemGray6).ignoresSafeArea()
+                
+                // Main Content
+                VStack(spacing: 0) {
+                    // MARK: - Search Bar
                     HStack {
-                        Image(systemName: "magnifyingglass")
-                            .foregroundColor(.gray)
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(.gray)
+                            
+                            Text("C2007 Hall")
+                                .foregroundColor(.black)
+                            
+                            Spacer()
+                            
+                            Image(systemName: "mic.fill")
+                                .foregroundColor(.gray)
+                        }
+                        .padding(.horizontal)
+                        .frame(height: 45)
+                        .background(Color.white)
+                        .cornerRadius(10)
                         
-                        Text("C2007 Hall")
-                            .foregroundColor(.black)
-                        
-                        Spacer()
-                        
-                        Image(systemName: "mic.fill")
-                            .foregroundColor(.gray)
+                        // Cancel Button → SearchMapView
+                        NavigationLink(destination: SearchMapView(), isActive: $navigateToSearchMap) {
+                            Button("Cancel") {
+                                navigateToSearchMap = true
+                            }
+                            .foregroundColor(.white)
+                            .padding(.leading, 8)
+                        }
+                        .buttonStyle(PlainButtonStyle())
                     }
-                    .padding(.horizontal)
-                    .frame(height: 45)
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    
-                    Button("Cancel") {
-                        // Cancel action
-                    }
-                    .foregroundColor(.white)
-                    .padding(.leading, 8)
-                }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 12)
-                .background(Color.blue)
-                
-                // MARK: - Map Image
-                Image("mainmap") // Replace with your map image name
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(10)
-                    .padding(.horizontal, 10)
-                    .padding(.top, 10)
-                
-                Spacer()
-                
-                // MARK: - Steps Button
-                Button(action: {
-                    // Handle Steps Action
-                }) {
-                    HStack {
-                        Text("Steps")
-                            .font(.headline)
-                        Spacer()
-                        Text(">")
-                            .font(.headline)
-                    }
-                    .padding()
-                    .frame(height: 60)
-                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
                     .background(Color.blue)
-                    .cornerRadius(12)
-                    .padding(.horizontal, 30)
-                    .foregroundColor(.white)
+                    
+                    // MARK: - Map Image
+                    Image("mainmap")
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(10)
+                        .padding(.horizontal, 10)
+                        .padding(.top, 10)
+                    
+                    Spacer()
+                    
+                    // MARK: - Steps Button → StepView
+                    NavigationLink(destination: StepView(), isActive: $navigateToSteps) {
+                        Button(action: {
+                            navigateToSteps = true
+                        }) {
+                            HStack {
+                                Text("Steps")
+                                    .font(.headline)
+                                Spacer()
+                                Text(">")
+                                    .font(.headline)
+                            }
+                            .padding()
+                            .frame(height: 60)
+                            .frame(maxWidth: .infinity)
+                            .background(Color.blue)
+                            .cornerRadius(12)
+                            .padding(.horizontal, 30)
+                            .foregroundColor(.white)
+                        }
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .padding(.bottom, 100) // Space for the tab bar
                 }
-                .padding(.bottom, 100) // Space for the tab bar
-            }
-            
-            // MARK: - Bottom Tab Bar
-            VStack(spacing: 0) {
-                Divider()
                 
-                HStack(spacing: 60) {
-                    TabBarItem(iconName: "homeblack", isSelected: false)
-                    TabBarItem(iconName: "locationblue", isSelected: true)
-                    TabBarItem(iconName: "bellimage", isSelected: false)
-                    TabBarItem(iconName: "profileimage", isSelected: false)
+                // MARK: - Bottom Tab Bar
+                VStack(spacing: 0) {
+                    Divider()
+                    
+                    HStack(spacing: 60) {
+                        TabBarItem(iconName: "homeblack", isSelected: false)
+                        TabBarItem(iconName: "locationblue", isSelected: true)
+                        TabBarItem(iconName: "bellimage", isSelected: false)
+                        TabBarItem(iconName: "profileimage", isSelected: false)
+                    }
+                    .frame(height: 20)
+                    .padding(.horizontal, 50)
+                    .padding(.top, 50)
+                    .padding(.bottom, 20)
+                    .background(Color.white)
                 }
-                .frame(height: 20)
-                .padding(.horizontal, 50)
-                .padding(.top, 50)
-                .padding(.bottom, 20)
+                .edgesIgnoringSafeArea(.bottom)
                 .background(Color.white)
             }
-            .edgesIgnoringSafeArea(.bottom)
-            .background(Color.white)
-            .padding(.horizontal, 0)
-            
         }
     }
 }
@@ -95,7 +105,7 @@ struct MapView: View {
 struct TabBarItem1: View {
     let iconName: String
     let isSelected: Bool
-    
+
     var body: some View {
         Image(iconName)
             .resizable()

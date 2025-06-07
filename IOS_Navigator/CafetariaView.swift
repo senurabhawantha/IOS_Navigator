@@ -22,7 +22,7 @@ struct CafetariaView: View {
                         Button(action: {
                             // Handle back
                         }) {
-                            Text("Back")
+                            Text("")
                                 .foregroundColor(.white)
                         }
                         .padding(.top, 150)

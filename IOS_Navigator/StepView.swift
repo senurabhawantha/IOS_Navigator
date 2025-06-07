@@ -26,10 +26,10 @@ struct StepView: View {
             VStack(spacing: 20) {
                 // MARK: - Header
                 HStack {
-                    Button("Back") {
-                        // Handle back
-                    }
-                    .foregroundColor(.white)
+//                    Button("Back") {
+//                        // Handle back
+//                    }
+//                    .foregroundColor(.white)
 
                     Spacer()
 
@@ -40,9 +40,9 @@ struct StepView: View {
 
                     Spacer()
 
-                    Button("Cancel") {
-                        // Handle cancel
-                    }
+//                    Button("Cancel") {
+//                        // Handle cancel
+//                    }
                     .foregroundColor(.white)
                 }
                 .padding(.top, 50)

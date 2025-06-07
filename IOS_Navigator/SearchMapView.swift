@@ -83,7 +83,7 @@ struct SearchMapView: View {
                     HStack(spacing: 70) {
                         // Home Tab (stays here)
                         NavigationLink(destination: DashboardView()) {
-                            TabBarItem(iconName: "homeimage", isSelected: false)
+                            TabBarItem(iconName: "homeblack", isSelected: false)
                         }
                         
 

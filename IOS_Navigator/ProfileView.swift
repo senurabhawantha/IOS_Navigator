@@ -11,7 +11,7 @@ struct ProfileView: View {
         VStack(spacing: 0) {
             // Top profile section
             ZStack(alignment: .topTrailing) {
-                Color.blue
+                Color.cyan
                     .edgesIgnoringSafeArea(.top)
                     .frame(height: 300)
 
@@ -38,7 +38,7 @@ struct ProfileView: View {
                         .foregroundColor(.white)
 
                     Text("jd@gmail.com")
-                        .foregroundColor(.white.opacity(0.9))
+                        .foregroundColor(.black.opacity(0.9))
                 }
 
                 // Settings icon

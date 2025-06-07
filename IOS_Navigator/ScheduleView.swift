@@ -30,10 +30,10 @@ struct ScheduleView: View {
                 // Top Header
                 VStack(alignment: .leading) {
                     HStack {
-//                        Button("Back") {
-//                            // Handle back action
-//                        }
-//                        .foregroundColor(.white)
+                        //                        Button("Back") {
+                        //                            // Handle back action
+                        //                        }
+                        //                        .foregroundColor(.white)
                         
                         Spacer()
                         
@@ -66,7 +66,7 @@ struct ScheduleView: View {
                     .padding(.top, 10)
                 }
                 .padding(.bottom)
-
+                
                 // Scrollable Content
                 ScrollView {
                     VStack(spacing: 16) {
@@ -76,24 +76,42 @@ struct ScheduleView: View {
                     }
                     .padding()
                 }
-
+                
                 // Bottom Navigation Bar
-                HStack(spacing: 60) {
-                    TabBarItem(iconName: "homeimage", isSelected: true)
-                    TabBarItem(iconName: "locationimage", isSelected: false)
-                    TabBarItem(iconName: "bellimage", isSelected: false)
-                    TabBarItem(iconName: "profileimage", isSelected: false)
+                VStack {
+                    HStack(spacing: 70) {
+                        // Home Tab (stays here)
+                        NavigationLink(destination: DashboardView()) {
+                            TabBarItem(iconName: "homeimage", isSelected: true)
+                        }
+                        // Location Tab
+                        NavigationLink(destination: SearchMapView()) {
+                            TabBarItem(iconName: "locationimage", isSelected: false)
+                        }
+                        
+                        // Bell Tab
+                        NavigationLink(destination: NotificationView()) {
+                            TabBarItem(iconName: "bellimage", isSelected: false)
+                        }
+                        
+                        // Profile Tab
+                        NavigationLink(destination: ProfileView()) {
+                            TabBarItem(iconName: "profileimage", isSelected: false)
+                        }
+                    }
+                    .frame(height: 75)
+                    .padding(.horizontal, 40)
+                    .padding(.top, 20)
+                    .padding(.bottom, 50)
                 }
-                .frame(height: 85)
-                .padding(.horizontal, 55)
+                
+                .frame(maxWidth: .infinity)
                 .background(Color.white)
-                //.clipShape(RoundedRectangle(cornerRadius: 30))
-                //.shadow(radius: 4)
-                .padding(.bottom, 30)
+            }
             }
         }
     }
-}
+
 
 // MARK: - Schedule Card
 

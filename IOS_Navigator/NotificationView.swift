@@ -31,10 +31,10 @@ struct NotificationView: View {
                 // Top Header
                 VStack(alignment: .leading) {
                     HStack {
-//                        Button("Back") {
-//                            // Handle back
-//                        }
-//                        .foregroundColor(.white)
+                        //                        Button("Back") {
+                        //                            // Handle back
+                        //                        }
+                        //                        .foregroundColor(.white)
                         
                         Spacer()
                         
@@ -50,7 +50,7 @@ struct NotificationView: View {
                     .padding(.horizontal)
                     
                 }
-
+                
                 // Notification Cards
                 ScrollView {
                     VStack(spacing: 26) {
@@ -60,20 +60,37 @@ struct NotificationView: View {
                     }
                     .padding()
                 }
-
+                
                 // Bottom Navigation Bar
-                HStack(spacing: 60) {
-                    TabBarItem(iconName: "homeimage", isSelected: false)
-                    TabBarItem(iconName: "locationimage", isSelected: false)
-                    TabBarItem(iconName: "bellimage", isSelected: true)
-                    TabBarItem(iconName: "profileimage", isSelected: false)
+                VStack {
+                    HStack(spacing: 70) {
+                        // Home Tab (stays here)
+                        NavigationLink(destination: DashboardView()) {
+                            TabBarItem(iconName: "homeblack", isSelected: false)
+                        }
+                        
+                        // Location Tab
+                        NavigationLink(destination: SearchMapView()) {
+                            TabBarItem(iconName: "locationimage", isSelected: false)
+                        }
+                        
+                        // Bell Tab
+                        NavigationLink(destination: NotificationView()) {
+                            TabBarItem(iconName: "notoficationblue", isSelected: true)
+                        }
+                        
+                        // Profile Tab
+                        NavigationLink(destination: ProfileView()) {
+                            TabBarItem(iconName: "profileimage", isSelected: false)
+                        }
+                    }
+                    .frame(height: 75)
+                    .padding(.horizontal, 40)
+                    .padding(.top, 20)
+                    .padding(.bottom, 0)
                 }
-                .frame(height: 75)
-                .padding(.horizontal, 60)
+                .frame(maxWidth: .infinity)
                 .background(Color.white)
-                //.clipShape(RoundedRectangle(cornerRadius: 30))
-                //.shadow(radius: 4)
-                .padding(.bottom,10)
             }
         }
     }

@@ -54,16 +54,16 @@ struct DashboardView: View {
             // MARK: - Bottom Tab Bar
             .safeAreaInset(edge: .bottom) {
                 VStack {
-                    HStack(spacing: 60) {
+                    HStack(spacing: 70) {
                         TabBarItem(iconName: "homeimage", isSelected: true)
                         TabBarItem(iconName: "locationimage", isSelected: false)
                         TabBarItem(iconName: "bellimage", isSelected: false)
                         TabBarItem(iconName: "profileimage", isSelected: false)
                     }
-                    .frame(height: 75)
+                    .frame(height: 85)
                     .padding(.horizontal, 40)
                     .padding(.top, 20)
-                    .padding(.bottom, 30)
+                    .padding(.bottom, 50)
                 }
                 .frame(maxWidth: .infinity)
                 .background(Color.white)

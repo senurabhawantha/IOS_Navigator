@@ -2,9 +2,9 @@ import SwiftUI
 
 struct CafetariaView: View {
     let menuItems: [MenuItem] = [
-        MenuItem(name: "Shawarma", price: "Rs. 540.00", imageName: "shawarma"),
-        MenuItem(name: "Pasta", price: "Rs. 540.00", imageName: "pasta"),
-        MenuItem(name: "Pasta", price: "Rs. 540.00", imageName: "pasta")
+        MenuItem(name: "Shawarma", price: "Rs. 250.00", imageName: "shawarma"),
+        MenuItem(name: "Noodles", price: "Rs. 300.00", imageName: "noodles"),
+        MenuItem(name: "Pasta", price: "Rs. 450.00", imageName: "pasta")
     ]
 
     var body: some View {

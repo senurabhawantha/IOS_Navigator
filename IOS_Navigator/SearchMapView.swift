@@ -70,7 +70,7 @@ struct SearchMapView: View {
             VStack {
                 HStack(spacing: 60) {
                     TabBarItem(iconName: "homeimage", isSelected: false)
-                    TabBarItem(iconName: "locationimage", isSelected: true)
+                    TabBarItem(iconName: "locationblue", isSelected: true)
                     TabBarItem(iconName: "bellimage", isSelected: false)
                     TabBarItem(iconName: "profileimage", isSelected: false)
                 }

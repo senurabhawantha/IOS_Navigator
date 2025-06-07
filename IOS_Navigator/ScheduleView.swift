@@ -1,130 +1,137 @@
-//
-//  ScheduleView.swift
-//  IOS_Navigator
-//
-//  Created by ITEDP on 2025-06-06.
-//
 import SwiftUI
 
+struct ScheduleItem: Identifiable {
+    let id = UUID()
+    let iconName: String
+    let title: String
+    let hall: String
+    let time: String
+    let iconColor: Color
+}
+
 struct ScheduleView: View {
+    let scheduleItems: [ScheduleItem] = [
+        ScheduleItem(iconName: "circle.fill", title: "Programming, Data Structures & Algorithms", hall: "Hall C002", time: "8:00 AM - 11:00 AM", iconColor: .green),
+        ScheduleItem(iconName: "bell.fill", title: "iOS Application Development", hall: "Hall C009", time: "6:00 PM - 8:30 PM", iconColor: .red),
+        ScheduleItem(iconName: "circle.fill", title: "Artificial Intelligence", hall: "Hall C009", time: "6:00 PM - 8:30 PM", iconColor: .green),
+        ScheduleItem(iconName: "building.2.fill", title: "Individual Project", hall: "Hall C007", time: "6:00 PM - 8:30 PM", iconColor: .purple),
+        ScheduleItem(iconName: "building.2.fill", title: "Dissertation and Project", hall: "Hall C007", time: "6:00 PM - 8:30 PM", iconColor: .purple)
+    ]
+    
     var body: some View {
-        VStack(spacing: 0) {
-            // Header
-            ZStack(alignment: .topLeading) {
-                Image("scheduleBackground") // Replace with your asset
-                    .resizable()
-                    .scaledToFill()
-                    .frame(height: 250)
-                    .clipped()
+        ZStack(alignment: .bottom) {
+            // Background Image
+            Image("schedulebackground")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
 
-                VStack(alignment: .leading, spacing: 16) {
-                    Button(action: {
-                        // Back action
-                    }) {
-                        Text("Back")
-                            .foregroundColor(.white)
-                            .padding(.top, 40)
-                            .padding(.leading, 20)
-                    }
-
-                    Text("Schedule")
-                        .font(.system(size: 34, weight: .bold))
+            VStack(spacing: 0) {
+                // Top Header
+                VStack(alignment: .leading) {
+                    HStack {
+                        Button("Back") {
+                            // Handle back action
+                        }
                         .foregroundColor(.white)
-                        .padding(.leading, 20)
-
-                    // Search bar
+                        
+                        Spacer()
+                        
+                        Text("Schedule")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                        
+                        Spacer()
+                    }
+                    .padding(.top, 50)
+                    .padding(.horizontal)
+                    
+                    // Search Bar
                     HStack {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(.blue)
                         Text("Search")
-                            .foregroundColor(.gray)
+                            .foregroundColor(.white)
                         Spacer()
                         Image(systemName: "mic.fill")
-                            .foregroundColor(.gray)
+                            .foregroundColor(.white)
                         Text("Cancel")
-                            .foregroundColor(.blue)
+                            .foregroundColor(.white)
                     }
                     .padding()
-                    .background(.ultraThinMaterial)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .padding(.horizontal, 20)
+                    .background(Color.white.opacity(0.2))
+                    .cornerRadius(20)
+                    .padding(.horizontal)
+                    .padding(.top, 10)
                 }
-            }
+                .padding(.bottom)
 
-            // Schedule Cards
-            ScrollView {
-                VStack(spacing: 20) {
-                    ScheduleCard(icon: "circle.fill", iconColor: .green, title: "Programming, Data Structures & Algorithms", room: "Hall C002", time: "8:00 AM - 11:00 AM")
-                    ScheduleCard(icon: "bell.fill", iconColor: .red, title: "iOS Application Development", room: "Hall C009", time: "6:00 PM - 8:30 PM")
-                    ScheduleCard(icon: "circle.fill", iconColor: .green, title: "Artificial Intelligence", room: "Hall C009", time: "6:00 PM - 8:30 PM")
-                    ScheduleCard(icon: "building.2.fill", iconColor: .purple, title: "Individual Project", room: "Hall C007", time: "6:00 PM - 8:30 PM")
-                    ScheduleCard(icon: "building.2.fill", iconColor: .purple, title: "Dissertation and Project", room: "Hall C007", time: "6:00 PM - 8:30 PM")
+                // Scrollable Content
+                ScrollView {
+                    VStack(spacing: 16) {
+                        ForEach(scheduleItems) { item in
+                            ScheduleCard(item: item)
+                        }
+                    }
+                    .padding()
                 }
-                .padding(.horizontal)
-                .padding(.top)
-            }
 
-            // Bottom Navigation Bar
-            HStack(spacing: 60) {
-                TabBarItem(iconName: "homeimage", isSelected: true)
-                TabBarItem(iconName: "locationimage", isSelected: false)
-                TabBarItem(iconName: "bellimage", isSelected: false)
-                TabBarItem(iconName: "profileimage", isSelected: false)
+                // Bottom Navigation Bar
+                HStack(spacing: 60) {
+                    TabBarItem(iconName: "homeimage", isSelected: true)
+                    TabBarItem(iconName: "locationimage", isSelected: false)
+                    TabBarItem(iconName: "bellimage", isSelected: false)
+                    TabBarItem(iconName: "profileimage", isSelected: false)
+                }
+                .frame(height: 85)
+                .padding(.horizontal, 50)
+                .background(Color.white)
+                //.clipShape(RoundedRectangle(cornerRadius: 30))
+                //.shadow(radius: 4)
+                .padding(.bottom, 10)
             }
-            .frame(height: 75)
-            .padding(.horizontal, 40)
-            .background(Color.white)
-            .clipShape(RoundedRectangle(cornerRadius: 30))
-            .shadow(radius: 4)
-            .padding(.bottom, 5)
         }
     }
 }
 
-// MARK: - Schedule Card View
+// MARK: - Schedule Card
+
 struct ScheduleCard: View {
-    var icon: String
-    var iconColor: Color
-    var title: String
-    var room: String
-    var time: String
-
+    let item: ScheduleItem
+    
     var body: some View {
-        HStack(alignment: .top) {
-            Circle()
-                .fill(iconColor)
-                .frame(width: 24, height: 24)
-                .overlay(
-                    Image(systemName: icon)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 12, height: 12)
-                        .foregroundColor(.white)
-                )
-
+        HStack {
+            Image(systemName: item.iconName)
+                .foregroundColor(item.iconColor)
+                .font(.system(size: 24))
+                .frame(width: 36, height: 36)
+                .background(item.iconColor.opacity(0.2))
+                .clipShape(Circle())
+            
             VStack(alignment: .leading, spacing: 4) {
-                Text(title)
-                    .font(.system(size: 16, weight: .bold))
-                Text(room)
+                Text(item.title)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.black)
+                Text(item.hall)
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
-
             Spacer()
-
-            Text(time)
-                .font(.subheadline)
+            Text(item.time)
+                .font(.footnote)
                 .foregroundColor(.gray)
         }
         .padding()
         .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
-        .shadow(color: .black.opacity(0.05), radius: 4, x: 0, y: 2)
+        .cornerRadius(25)
+        .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
     }
 }
 
 // MARK: - TabBar Item
-struct TabBarItem7: View {
+
+struct TabBarItem9: View {
     let iconName: String
     let isSelected: Bool
 
@@ -132,13 +139,13 @@ struct TabBarItem7: View {
         Image(iconName)
             .resizable()
             .renderingMode(.template)
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 24, height: 24)
             .foregroundColor(isSelected ? .blue : .black)
+            .frame(width: 28, height: 28)
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     ScheduleView()
 }
-

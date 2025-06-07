@@ -25,14 +25,14 @@ struct ProfileView: View {
                         .padding(.horizontal)
 
                     // Profile Picture & Name
-                    Image("profileImage") // Add your asset with this name
+                    Image("profilepicture") // Add your asset with this name
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 100, height: 100)
                         .clipShape(Circle())
                         .overlay(Circle().stroke(Color.white, lineWidth: 3))
 
-                    Text("John Doe")
+                    Text("Fernando")
                         .font(.title2)
                         .fontWeight(.semibold)
                         .foregroundColor(.white)
@@ -75,17 +75,17 @@ struct ProfileView: View {
 
             // Bottom navigation bar
             HStack(spacing: 60) {
-                TabBarItem(iconName: "homeimage", isSelected: true)
+                TabBarItem(iconName: "homeblack", isSelected: false)
                 TabBarItem(iconName: "locationimage", isSelected: false)
                 TabBarItem(iconName: "bellimage", isSelected: false)
-                TabBarItem(iconName: "profileimage", isSelected: false)
+                TabBarItem(iconName: "profileblue", isSelected: true)
             }
             .frame(height: 75)
             .padding(.horizontal, 40)
             .background(Color.white)
-            .clipShape(RoundedRectangle(cornerRadius: 30))
-            .shadow(radius: 4)
-            .padding(.bottom, 5)
+            //.clipShape(RoundedRectangle(cornerRadius: 30))
+            //.shadow(radius: 4)
+            .padding(.bottom, 0)
         }
     }
 }

@@ -17,6 +17,9 @@ struct MapView: View {
                             .foregroundColor(.black)
                         
                         Spacer()
+                        
+                        Image(systemName: "mic.fill")
+                            .foregroundColor(.gray)
                     }
                     .padding(.horizontal)
                     .frame(height: 45)
@@ -70,8 +73,8 @@ struct MapView: View {
                 Divider()
                 
                 HStack(spacing: 60) {
-                    TabBarItem(iconName: "homeimage", isSelected: true)
-                    TabBarItem(iconName: "locationimage", isSelected: false)
+                    TabBarItem(iconName: "homeblack", isSelected: false)
+                    TabBarItem(iconName: "locationblue", isSelected: true)
                     TabBarItem(iconName: "bellimage", isSelected: false)
                     TabBarItem(iconName: "profileimage", isSelected: false)
                 }

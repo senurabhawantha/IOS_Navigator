@@ -83,12 +83,44 @@ struct MapView: View {
                 VStack(spacing: 0) {
                     Divider()
                     
-                    HStack(spacing: 60) {
-                        TabBarItem(iconName: "homeblack", isSelected: false)
-                        TabBarItem(iconName: "locationblue", isSelected: true)
-                        TabBarItem(iconName: "bellimage", isSelected: false)
-                        TabBarItem(iconName: "profileimage", isSelected: false)
+                    
+                    
+                    
+                    HStack(spacing: 70) {
+                        // Home Tab (stays here)
+                        NavigationLink(destination: SearchMapView()) {
+                            TabBarItem(iconName: "homeblack", isSelected: false)
+                        }
+                        //TabBarItem(iconName: "homeblack", isSelected: false)
+
+                        // Location Tab
+                        NavigationLink(destination: SearchMapView()) {
+                            TabBarItem(iconName: "locationblue", isSelected: true)
+                        }
+
+                        // Bell Tab
+                        NavigationLink(destination: NotificationView()) {
+                            TabBarItem(iconName: "bellimage", isSelected: false)
+                        }
+
+                        // Profile Tab
+                        NavigationLink(destination: ProfileView()) {
+                            TabBarItem(iconName: "profileimage", isSelected: false)
+                        }
                     }
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+//                    HStack(spacing: 60) {
+//                        TabBarItem(iconName: "homeblack", isSelected: false)
+//                        TabBarItem(iconName: "locationblue", isSelected: true)
+//                        TabBarItem(iconName: "bellimage", isSelected: false)
+//                        TabBarItem(iconName: "profileimage", isSelected: false)
+//                    }
                     .frame(height: 20)
                     .padding(.horizontal, 50)
                     .padding(.top, 50)

@@ -79,12 +79,30 @@ struct SearchMapView: View {
 
                 // MARK: - Bottom Navigation Bar
                 VStack {
-                    HStack(spacing: 60) {
-                        TabBarItem(iconName: "homeimage", isSelected: false)
-                        TabBarItem(iconName: "locationblue", isSelected: true)
-                        TabBarItem(iconName: "bellimage", isSelected: false)
-                        TabBarItem(iconName: "profileimage", isSelected: false)
+                    
+                    HStack(spacing: 70) {
+                        // Home Tab (stays here)
+                        NavigationLink(destination: DashboardView()) {
+                            TabBarItem(iconName: "homeimage", isSelected: false)
+                        }
+                        
+
+                        // Location Tab
+                        NavigationLink(destination: SearchMapView()) {
+                            TabBarItem(iconName: "locationblue", isSelected: true)
+                        }
+
+                        // Bell Tab
+                        NavigationLink(destination: NotificationView()) {
+                            TabBarItem(iconName: "bellimage", isSelected: false)
+                        }
+
+                        // Profile Tab
+                        NavigationLink(destination: ProfileView()) {
+                            TabBarItem(iconName: "profileimage", isSelected: false)
+                        }
                     }
+                    
                     .frame(height: 75)
                     .padding(.horizontal, 40)
                     .padding(.top, 10)

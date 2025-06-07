@@ -143,18 +143,37 @@ struct LibraryView: View {
                 Spacer(minLength: 20)
 
                 // 🔹 Bottom Navigation Bar
-                HStack(spacing: 60) {
-                    TabBarItem(iconName: "homeimage", isSelected: true)
-                    TabBarItem(iconName: "locationimage", isSelected: false)
-                    TabBarItem(iconName: "bellimage", isSelected: false)
-                    TabBarItem(iconName: "profileimage", isSelected: false)
+              
+                
+                VStack {
+                    HStack(spacing: 70) {
+                        // Home Tab (stays here)
+                        TabBarItem(iconName: "homeimage", isSelected: true)
+
+                        // Location Tab
+                        NavigationLink(destination: SearchMapView()) {
+                            TabBarItem(iconName: "locationimage", isSelected: false)
+                        }
+
+                        // Bell Tab
+                        NavigationLink(destination: NotificationView()) {
+                            TabBarItem(iconName: "bellimage", isSelected: false)
+                        }
+
+                        // Profile Tab
+                        NavigationLink(destination: ProfileView()) {
+                            TabBarItem(iconName: "profileimage", isSelected: false)
+                        }
+                    }
+                    .frame(height: 45)
+                    .padding(.horizontal, 40)
+                    .padding(.top, 40)
+                    .padding(.bottom, 10)
                 }
-                .frame(height: 80)
-                .padding(.horizontal, 70)
+                
+                .frame(maxWidth: .infinity)
                 .background(Color.white)
-                //.cornerRadius(30)
-                //.shadow(radius: 4)
-                .padding(.bottom, -20)
+                
             }
         }
     }

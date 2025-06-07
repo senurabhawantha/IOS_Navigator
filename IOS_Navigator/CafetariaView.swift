@@ -115,19 +115,38 @@ struct CafetariaView: View {
             }
 
             // MARK: - Bottom Navigation
-            HStack(spacing: 60) {
-                TabBarItem(iconName: "homeimage", isSelected: true)
-                TabBarItem(iconName: "locationimage", isSelected: false)
-                TabBarItem(iconName: "bellimage", isSelected: false)
-                TabBarItem(iconName: "profileimage", isSelected: false)
+            
+            VStack {
+                HStack(spacing: 70) {
+                    // Home Tab (stays here)
+                    TabBarItem(iconName: "homeimage", isSelected: true)
+
+                    // Location Tab
+                    NavigationLink(destination: SearchMapView()) {
+                        TabBarItem(iconName: "locationimage", isSelected: false)
+                    }
+
+                    // Bell Tab
+                    NavigationLink(destination: NotificationView()) {
+                        TabBarItem(iconName: "bellimage", isSelected: false)
+                    }
+
+                    // Profile Tab
+                    NavigationLink(destination: ProfileView()) {
+                        TabBarItem(iconName: "profileimage", isSelected: false)
+                    }
+                }
+                .frame(height: 5)
+                .padding(.horizontal, 40)
+                .padding(.top, 20)
+                .padding(.bottom, 30)
             }
-            .frame(height: 75)
-            .padding(.horizontal, 70)
+            .frame(maxWidth: .infinity)
             .background(Color.white)
-           // .clipShape(RoundedRectangle(cornerRadius: 30))
-            //.shadow(radius: 4)
-            .padding(.top, 40)
         }
+            
+         
+        
         .edgesIgnoringSafeArea(.top)
     }
 }

@@ -74,18 +74,35 @@ struct ProfileView: View {
             Spacer()
 
             // Bottom navigation bar
-            HStack(spacing: 60) {
-                TabBarItem(iconName: "homeblack", isSelected: false)
-                TabBarItem(iconName: "locationimage", isSelected: false)
-                TabBarItem(iconName: "bellimage", isSelected: false)
-                TabBarItem(iconName: "profileblue", isSelected: true)
+            VStack {
+                HStack(spacing: 70) {
+                    // Home Tab (stays here)
+                    NavigationLink(destination: DashboardView()) {
+                        TabBarItem(iconName: "homeblack", isSelected: false)
+                    }
+                    // Location Tab
+                    NavigationLink(destination: SearchMapView()) {
+                        TabBarItem(iconName: "locationimage", isSelected: false)
+                    }
+
+                    // Bell Tab
+                    NavigationLink(destination: NotificationView()) {
+                        TabBarItem(iconName: "bellimage", isSelected: false)
+                    }
+
+                    // Profile Tab
+                    NavigationLink(destination: ProfileView()) {
+                        TabBarItem(iconName: "profileblue", isSelected: true)
+                    }
+                }
+                .frame(height: 45)
+                .padding(.horizontal, 40)
+                .padding(.top, 40)
+                .padding(.bottom, 10)
             }
-            .frame(height: 75)
-            .padding(.horizontal, 40)
+            
+            .frame(maxWidth: .infinity)
             .background(Color.white)
-            //.clipShape(RoundedRectangle(cornerRadius: 30))
-            //.shadow(radius: 4)
-            .padding(.bottom, 0)
         }
     }
 }

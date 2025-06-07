@@ -31,10 +31,10 @@ struct NotificationView: View {
                 // Top Header
                 VStack(alignment: .leading) {
                     HStack {
-                        Button("Back") {
-                            // Handle back
-                        }
-                        .foregroundColor(.white)
+//                        Button("Back") {
+//                            // Handle back
+//                        }
+//                        .foregroundColor(.white)
                         
                         Spacer()
                         
@@ -69,11 +69,11 @@ struct NotificationView: View {
                     TabBarItem(iconName: "profileimage", isSelected: false)
                 }
                 .frame(height: 75)
-                .padding(.horizontal, 50)
+                .padding(.horizontal, 60)
                 .background(Color.white)
                 //.clipShape(RoundedRectangle(cornerRadius: 30))
                 //.shadow(radius: 4)
-                .padding(.bottom,-10)
+                .padding(.bottom,10)
             }
         }
     }

@@ -1,21 +1,21 @@
 import SwiftUI
 
 struct DashboardView: View {
-    // Adjustable constants
+    
     let boxSize: CGFloat = 150
     let gridSpacing: CGFloat = 30
 
     var body: some View {
         NavigationStack {
             ZStack {
-                // Background Image
+                
                 Image("backgroundImage3")
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
 
                 VStack(spacing: 0) {
-                    // Top Greeting and Profile
+                    
                     HStack {
                         Text("Hi, Fernando 👋!")
                             .font(.custom("Futura", size: 30))
@@ -33,7 +33,7 @@ struct DashboardView: View {
                     .padding(.horizontal, 30)
                     .padding(.top, 70)
 
-                    // Dashboard Title
+                    
                     Text("Dashboard")
                         .font(.custom("Futura-Bold", size: 48))
                         .foregroundColor(.white)
@@ -41,7 +41,7 @@ struct DashboardView: View {
 
                     Spacer()
 
-                    // Dashboard Buttons Grid
+                    
                     LazyVGrid(columns: [GridItem(), GridItem()], spacing: gridSpacing) {
                         NavigationLink(destination: SearchMapView()) {
                             DashboardButton(imageName: "map", label: "Map", size: boxSize)
@@ -61,24 +61,24 @@ struct DashboardView: View {
                     Spacer()
                 }
 
-                // Bottom Tab Bar with NavigationLinks
+                
                 .safeAreaInset(edge: .bottom) {
                     VStack {
                         HStack(spacing: 70) {
-                            // Home Tab (stays here)
+                            
                             TabBarItem(iconName: "homeimage", isSelected: true)
 
-                            // Location Tab
+                            
                             NavigationLink(destination: SearchMapView()) {
                                 TabBarItem(iconName: "locationimage", isSelected: false)
                             }
 
-                            // Bell Tab
+                            
                             NavigationLink(destination: NotificationView()) {
                                 TabBarItem(iconName: "bellimage", isSelected: false)
                             }
 
-                            // Profile Tab
+                            
                             NavigationLink(destination: ProfileView()) {
                                 TabBarItem(iconName: "profileimage", isSelected: false)
                             }

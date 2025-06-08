@@ -40,18 +40,18 @@ struct LibraryView: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            // 🔹 Full background image
+            
             Image("libraryBackground")
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
 
-            // 🔸 Semi-transparent overlay for readability
+            
             Color.black.opacity(0.3)
                 .ignoresSafeArea()
 
             VStack(spacing: 0) {
-                // 🔹 Search Bar and Title
+                
                 VStack(spacing: 16) {
                     HStack {
                         Image(systemName: "magnifyingglass")
@@ -107,7 +107,7 @@ struct LibraryView: View {
                 .padding(.horizontal, 90)
                 .padding(.top, 8)
 
-                // 🔹 Room Cards (smaller)
+                
                 ScrollView {
                     VStack(spacing: 10) {
                         ForEach(filteredRooms) { room in
@@ -142,7 +142,7 @@ struct LibraryView: View {
 
                 Spacer(minLength: 20)
 
-                // 🔹 Bottom Navigation Bar
+                
               
                 
                 VStack {

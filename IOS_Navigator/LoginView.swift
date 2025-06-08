@@ -9,14 +9,14 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                // Background Image
+                
                 Image("backgroundImage")
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
 
                 VStack {
-                    // Top Section
+                    
                     VStack(spacing: 25) {
                         Image("logo")
                             .resizable()
@@ -30,7 +30,7 @@ struct LoginView: View {
 
                     Spacer()
 
-                    // Middle Section (Fields)
+                    
                     VStack(spacing: 25) {
                         HStack {
                             Image(systemName: "envelope")
@@ -74,7 +74,7 @@ struct LoginView: View {
                         HStack {
                             Spacer()
                             Button(action: {
-                                // Forgot password logic
+                                
                             }) {
                                 Text("Forgot Password?")
                                     .foregroundColor(.white)
@@ -86,13 +86,13 @@ struct LoginView: View {
 
                     Spacer()
 
-                    // Bottom Section (Login Button)
+                    
                     NavigationLink(destination: DashboardView(), isActive: $isLoggedIn) {
                         EmptyView()
                     }
 
                     Button(action: {
-                        // You could validate login here
+                    
                         isLoggedIn = true
                     }) {
                         Text("Login")

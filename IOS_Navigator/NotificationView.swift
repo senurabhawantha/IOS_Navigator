@@ -21,14 +21,14 @@ struct NotificationView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            // Full-screen Background Image
+            
             Image("notificationBackground")
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
             
             VStack(spacing: 40) {
-                // Top Header
+                
                 VStack(alignment: .leading) {
                     HStack {
                         //                        Button("Back") {
@@ -51,7 +51,7 @@ struct NotificationView: View {
                     
                 }
                 
-                // Notification Cards
+                
                 ScrollView {
                     VStack(spacing: 26) {
                         ForEach(notifications) { item in
@@ -61,25 +61,25 @@ struct NotificationView: View {
                     .padding()
                 }
                 
-                // Bottom Navigation Bar
+                
                 VStack {
                     HStack(spacing: 70) {
-                        // Home Tab (stays here)
+                        
                         NavigationLink(destination: DashboardView()) {
                             TabBarItem(iconName: "homeblack", isSelected: false)
                         }
                         
-                        // Location Tab
+                        
                         NavigationLink(destination: SearchMapView()) {
                             TabBarItem(iconName: "locationimage", isSelected: false)
                         }
                         
-                        // Bell Tab
+                        
                         NavigationLink(destination: NotificationView()) {
                             TabBarItem(iconName: "notoficationblue", isSelected: true)
                         }
                         
-                        // Profile Tab
+                        
                         NavigationLink(destination: ProfileView()) {
                             TabBarItem(iconName: "profileimage", isSelected: false)
                         }
@@ -96,7 +96,7 @@ struct NotificationView: View {
     }
 }
 
-// MARK: - Notification Card
+
 
 struct NotificationCard: View {
     let item: NotificationItem
@@ -130,7 +130,7 @@ struct NotificationCard: View {
     }
 }
 
-// MARK: - TabBar Item
+
 
 struct TabBarItem8: View {
     let iconName: String
@@ -145,7 +145,7 @@ struct TabBarItem8: View {
     }
 }
 
-// MARK: - Preview
+
 
 #Preview {
     NotificationView()

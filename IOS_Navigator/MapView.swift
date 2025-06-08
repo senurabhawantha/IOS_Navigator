@@ -11,7 +11,7 @@ struct MapView: View {
                 
                 // Main Content
                 VStack(spacing: 0) {
-                    // MARK: - Search Bar
+                    
                     HStack {
                         HStack {
                             Image(systemName: "magnifyingglass")
@@ -30,7 +30,7 @@ struct MapView: View {
                         .background(Color.white)
                         .cornerRadius(10)
                         
-                        // Cancel Button → SearchMapView
+                        
                         NavigationLink(destination: SearchMapView(), isActive: $navigateToSearchMap) {
                             Button("Cancel") {
                                 navigateToSearchMap = true
@@ -44,7 +44,7 @@ struct MapView: View {
                     .padding(.vertical, 12)
                     .background(Color.blue)
                     
-                    // MARK: - Map Image
+                    
                     Image("mainmap")
                         .resizable()
                         .scaledToFit()
@@ -54,7 +54,7 @@ struct MapView: View {
                     
                     Spacer()
                     
-                    // MARK: - Steps Button → StepView
+                    
                     NavigationLink(destination: StepView(), isActive: $navigateToSteps) {
                         Button(action: {
                             navigateToSteps = true
@@ -79,7 +79,7 @@ struct MapView: View {
                     .padding(.bottom, 100) // Space for the tab bar
                 }
                 
-                // MARK: - Bottom Tab Bar
+                
                 VStack(spacing: 0) {
                     Divider()
                     

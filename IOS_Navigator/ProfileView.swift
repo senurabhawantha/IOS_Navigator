@@ -9,7 +9,7 @@ import SwiftUI
 struct ProfileView: View {
     var body: some View {
         VStack(spacing: 0) {
-            // Top profile section
+            
             ZStack(alignment: .topTrailing) {
                 Color.cyan
                     .edgesIgnoringSafeArea(.top)
@@ -24,8 +24,8 @@ struct ProfileView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal)
 
-                    // Profile Picture & Name
-                    Image("profilepicture") // Add your asset with this name
+                    
+                    Image("profilepicture")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 100, height: 100)
@@ -41,9 +41,9 @@ struct ProfileView: View {
                         .foregroundColor(.black.opacity(0.9))
                 }
 
-                // Settings icon
+                
                 Button(action: {
-                    // Action for settings gear
+                    
                 }) {
                     Image(systemName: "gearshape.fill")
                         .font(.title2)
@@ -54,7 +54,7 @@ struct ProfileView: View {
                 .padding(.trailing, 20)
             }
 
-            // Settings and privacy section
+            
             VStack(spacing: 20) {
                 ButtonRow(title: "Settings and Privacy")
 
@@ -73,24 +73,24 @@ struct ProfileView: View {
 
             Spacer()
 
-            // Bottom navigation bar
+            
             VStack {
                 HStack(spacing: 70) {
-                    // Home Tab (stays here)
+                    
                     NavigationLink(destination: DashboardView()) {
                         TabBarItem(iconName: "homeblack", isSelected: false)
                     }
-                    // Location Tab
+                    
                     NavigationLink(destination: SearchMapView()) {
                         TabBarItem(iconName: "locationimage", isSelected: false)
                     }
 
-                    // Bell Tab
+                    
                     NavigationLink(destination: NotificationView()) {
                         TabBarItem(iconName: "bellimage", isSelected: false)
                     }
 
-                    // Profile Tab
+                    
                     NavigationLink(destination: ProfileView()) {
                         TabBarItem(iconName: "profileblue", isSelected: true)
                     }

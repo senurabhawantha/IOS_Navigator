@@ -10,7 +10,7 @@ struct CafetariaView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             VStack(spacing: 0) {
-                // MARK: - Header with Image and Title
+                
                 ZStack(alignment: .topLeading) {
                     Image("cafeBackground")
                         .resizable()
@@ -20,7 +20,7 @@ struct CafetariaView: View {
 
                     VStack(alignment: .leading, spacing: -30) {
                         Button(action: {
-                            // Handle back
+                        
                         }) {
                             Text("")
                                 .foregroundColor(.white)
@@ -40,7 +40,7 @@ struct CafetariaView: View {
                     }
                   
 
-                    // MARK: - Crowd Level Card
+                    
                     VStack {
                         Spacer()
                         HStack {
@@ -53,7 +53,7 @@ struct CafetariaView: View {
                                     .foregroundColor(.green)
                                     .bold()
                             }
-                            Image("crowdLevel") // Illustration asset
+                            Image("crowdLevel")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 150)
@@ -71,7 +71,7 @@ struct CafetariaView: View {
 
                 Spacer().frame(height: 220)
 
-                // MARK: - Menu Header
+                
                 VStack(spacing: 20) {
                     Text("Today Menu")
                         .font(.title2)
@@ -83,7 +83,7 @@ struct CafetariaView: View {
                 }
                 .padding(.bottom,40)
 
-                // MARK: - Menu Scroll
+                
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 16) {
                         ForEach(menuItems, id: \.name) { item in
@@ -114,7 +114,7 @@ struct CafetariaView: View {
                 Spacer()
             }
 
-            // MARK: - Bottom Navigation
+            
             
             VStack {
                 HStack(spacing: 70) {
